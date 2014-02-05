@@ -1,0 +1,23 @@
+ <!DOCTYPE html>
+<html>
+    <head>
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    </head>
+    <body>
+        <select class="test">
+            <option>test1</option>
+            <option>test2</option>
+        </select>
+        <script src="http://yui.yahooapis.com/3.14.1/build/yui/yui-min.js"></script>
+        <script>
+            YUI().use('node', 'event-valuechange', function (Y) {
+                Y.one(".test").on("valuechange", function(e) {
+                    Y.log("Buggy " + e.newVal);
+                });
+                Y.one(".test").on("change", function(e) {
+                    Y.log(e.target.get("value"));
+                });
+            });
+        </script>
+    </body>
+</html>
